@@ -1,8 +1,8 @@
 import http from 'http';
+import '../utils/log';
 import app from '../app';
-import config from '../config';
+import { port } from '../config';
 
-const { port } = config;
 app.set('port', port);
 
 /**
@@ -34,16 +34,16 @@ function onError(error) {
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-  case 'EACCES':
-    console.error(bind + ' requires elevated privileges');
-    process.exit(1);
-    break;
-  case 'EADDRINUSE':
-    console.error(bind + ' is already in use');
-    process.exit(1);
-    break;
-  default:
-    throw error;
+    case 'EACCES':
+      log.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      log.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
   }
 }
 
@@ -56,5 +56,5 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.info('===>Listening on ' + bind);
+  log.info('===>Listening on ' + bind);
 }

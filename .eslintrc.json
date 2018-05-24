@@ -8,10 +8,16 @@
   "parserOptions": {
     "sourceType": "module"
   },
+  "globals": {
+    "log": true
+  },
   "rules": {
     "indent": [
       "error",
-      2
+      2,
+      {
+        "SwitchCase": 1
+      }
     ],
     "linebreak-style": [
       "error",
@@ -22,7 +28,6 @@
       "single"
     ],
     "no-var": "error",
-    "no-console":"off",
     "prefer-const": "error",
     "semi": [
       "error",
