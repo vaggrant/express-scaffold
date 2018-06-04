@@ -1,8 +1,7 @@
 import express from 'express';
-import project from '../../package.json';
+import { version } from '../config';
 import { responseClient } from '../utils/http';
 
-const { version } = project;
 const router = express.Router();
 
 router.get('/version', (req, res) => {
